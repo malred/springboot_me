@@ -1,9 +1,7 @@
 package org.springboot.webServer;
 
-import org.springboot.webServer.Conditional.JettyConditional;
-import org.springboot.webServer.Conditional.TomcatConditional; 
+import org.springboot.webServer.Conditional.MalredConditionalOnClass;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -11,13 +9,13 @@ import org.springframework.context.annotation.Configuration;
 public class WebServerAutoConfiguration {
 
   @Bean
-  @Conditional(TomcatConditional.class) // 为该bean的生效添加条件
+  @MalredConditionalOnClass("org.apache.catalina.startup.Tomcat")
   public TomcatWebServer tomcatWebServer() {
     return new TomcatWebServer();
   }
 
   @Bean
-  @Conditional(JettyConditional.class)
+  @MalredConditionalOnClass("org.eclipse.jetty.server.Server")
   public JettyWebServer jettyWebServer() {
     return new JettyWebServer();
   }

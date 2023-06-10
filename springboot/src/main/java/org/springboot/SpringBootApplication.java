@@ -1,7 +1,6 @@
 package org.springboot;
 
 import java.lang.annotation.*;
-
 import org.springboot.webServer.WebServerAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
